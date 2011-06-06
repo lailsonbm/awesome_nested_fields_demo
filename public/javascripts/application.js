@@ -17,7 +17,3 @@ $(document).ready(function(e) {
     container: 'tbody'
   });
 });
-
-function isBlank(str) {
-    return (!str || /^\s*$/.test(str));
-}
