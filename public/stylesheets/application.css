@@ -1,0 +1,41 @@
+body {
+  background-repeat: no-repeat;
+  background-position: top right;
+}
+
+body.without {
+  background-image: url(../images/without-nested-fields-badge.png);
+}
+
+body.plain {
+  background-image: url(../images/plain-nested-fields-badge.png);
+}
+
+body.table {
+  background-image: url(../images/table-nested-fields-badge.png);
+}
+
+div.actions {
+  margin-top: 20px;
+}
+
+table, table th, table td {
+  border-collapse: collapse;
+  border: 1px solid #cccccc;
+}
+
+table th, table td {
+  padding: 2px 4px;
+}
+
+table input,
+table input:focus {
+  border: none;
+  outline: none;
+}
+
+.without fieldset,
+.plain fieldset {
+  border: none;
+  border-bottom: 1px solid #cccccc;
+}

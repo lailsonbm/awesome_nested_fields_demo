@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @person.name %>
+</p>
+
+<h2>Phones</h2>
+<% if @person.phones.any? %>
+  <ul>
+    <% for phone in @person.phones %>
+      <li><%= phone.number %> (<%= phone.place %>)</li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>This person has no phones yet.</p>
+<% end %>
+
+
+
+<%= link_to 'Edit', edit_without_person_path(@person) %> |
+<%= link_to 'Back', without_people_path %>
