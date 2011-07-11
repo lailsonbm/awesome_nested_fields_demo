@@ -2,17 +2,48 @@
 <html>
   <head>
     <title>Phonebook</title>
-    <style type="text/css" media="screen">
+    <link href="/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" /> 
+    <link href="/stylesheets/scaffold.css" media="screen" rel="stylesheet" type="text/css" />
+    <style type="text/css">
       BODY {
-        color: #333333;
-        font-family: sans-serif;
         font-size: 16px;
+        text-align: center;
+      }
+      
+      H1 {
+        font-size: 96px;
+        letter-spacing: -0.05em;
+        margin-bottom: 0.5em;
+        margin-top: 1em;
+        text-shadow: 2px 2px 1px rgba(255,255,255,0.75);
+      }
+      
+      .subtitle {
+        margin-bottom: 48px;
+      }
+      
+      UL {
+        display: inline;
+        margin-top: 48px;
+      }
+      
+      UL LI {
+        display: inline;
+        list-style: none;
+        margin-right: 20px;
+      }
+      
+      UL LI A {
+        background-color: white;
+        background-color: rgba(255,255,255,0.5);
+        padding: 12px 18px;
+        text-decoration: none;
       }
     </style>
   </head>
   <body>
     <h1>Phonebook</h1>
-    <p><code><a href="http://github.com/lailsonbm/awesome_nested_fields">awesome_nested_fields</a></code> demo.</p>
+    <p class="subtitle"><code><a href="http://github.com/lailsonbm/awesome_nested_fields">awesome_nested_fields</a></code> (quick) demo.</p>
     
     <ul>
       <li><a href="/without/people">Without awesome_nested_fields</a></li>
