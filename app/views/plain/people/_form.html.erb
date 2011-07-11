@@ -18,7 +18,9 @@
   
   <h2>Phones</h2>
   <div class="container">
-    <%= nested_fields f, :phones %>
+    <%= f.nested_fields_for :phones do |f|
+      render 'phone', f: f
+    end -%>
   </div>
   <a href="#" class="add">add phone</a>
   

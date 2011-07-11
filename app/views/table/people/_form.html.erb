@@ -26,10 +26,15 @@
       </tr>
     </thead>
     <tbody>
-      <%= nested_fields_items(f, :phones, none_partial: 'phone_none') %>
+      <%= f.nested_fields_for :phones, show_empty: true do |f|
+        if f
+          render 'phone', f: f
+        else
+          render 'phone_none'
+        end
+      end -%>
     </tbody>
   </table>
-  <%= nested_fields_template(f, :phones, none_partial: 'phone_none') %>
   <a href="#" class="add">add phone</a>
   
   <div class="actions">

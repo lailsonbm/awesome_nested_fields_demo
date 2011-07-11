@@ -14,6 +14,6 @@ $(document).ready(function(e) {
   
   // Table example
   $('BODY.table FORM').nestedFields({
-    container: 'tbody'
+    containerSelector: 'tbody'
   });
 });
