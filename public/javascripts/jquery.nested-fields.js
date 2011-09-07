@@ -20,32 +20,30 @@
     emptySelector: '.empty',
     addSelector: '.add',
     removeSelector: '.remove',
-    newItemIndex: 'new_nested_item'
+    newItemIndex: 'new_nested_item',
+    unescapeTemplate: true
   };
   
   // PUBLIC API
   var methods = {
     init: function(options) {
-      var $this = $(this);
-      if($(this).data('nested-fields.options')) {
-        console.log('Nested fields already defined for this element. If you want to redefine options, destroy it and init again.');
-        return $this;
-      } else if(getOptions($this)) {
-        console.log('You cannot nest nested fields. Who would say that, uh?');
-        return $this;
-      }
-      
-      options = $.extend({}, defaultSettings, options);
-      options.itemTemplate = $(options.itemTemplateSelector, $this);
-      options.emptyTemplate = $(options.emptyTemplateSelector, $this);
-      options.container = $(options.containerSelector, $this);
-      options.add = $(options.addSelector, $this);
-      $this.data('nested-fields.options', options); 
-      
-      bindInsertToAdd(options);
-      bindRemoveToItems(options);
-      
-      return $this;
+      return this.each(function() {        
+        var $this = $(this);
+        if($(this).data('nested-fields.options')) {
+          log('Nested fields already defined for this element. If you want to redefine options, destroy it and init again.');
+          return $this;
+        }
+
+        options = $.extend({}, defaultSettings, options);
+        options.itemTemplate = $(options.itemTemplateSelector, $this);
+        options.emptyTemplate = $(options.emptyTemplateSelector, $this);
+        options.container = $(options.containerSelector, $this);
+        options.add = $(options.addSelector, $this);
+        $this.data('nested-fields.options', options); 
+
+        bindInsertToAdd(options);
+        bindRemoveToItems(options);
+      });
     },
     
     insert: function(callback, options) {
@@ -81,20 +79,20 @@
     } else if (typeof method === 'object' || !method) {
       return methods.init.apply(this, arguments);
     } else {
-      $.error( 'Method ' +  method + ' does not exist on jQuery.nestedFields' );
+      $.error('Method ' +  method + ' does not exist on jQuery.nestedFields');
     }
   };
   
   // Initialization functions
   
   function getOptions(element) {
-    element = $(element);
-    while(element.length > 0) {
-      var data = element.data('nested-fields.options');
+    var $element = $(element);
+    while($element.length > 0) {
+      var data = $element.data('nested-fields.options');
       if(data) {
         return data;
       } else {
-        element = element.parent();
+        $element = $element.parent();
       }
     }
     return null;
@@ -120,6 +118,9 @@
     var newId = new Date().getTime();
     
     var contents = options.itemTemplate.html();
+    if(options['unescapeTemplate']) {
+      contents = unescape_html_tags(contents);
+    }
     var newItem = $(contents.replace(regexp, newId));
     newItem.attr('data-new-record', true);
     newItem.attr('data-record-id', newId);
@@ -192,7 +193,11 @@
   
   function insertEmpty(options) {
     if(findItems(options).length === 0) {
-      options.container.append(options.emptyTemplate.html());
+      var contents = options.emptyTemplate.html();
+      if(options['unescapeTemplate']) {
+        contents = unescape_html_tags(contents);
+      }
+      options.container.append(contents);
     }
   }
   
@@ -217,6 +222,20 @@
   
   function findEmpty(options) {
     return options.container.find(options.emptySelector);
+  }
+  
+  // Utility functions
+  
+  function unescape_html_tags(html) {
+    var e = document.createElement('div');
+    e.innerHTML = html;
+    return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+  }
+  
+  function log(msg) {
+    if(console && console.log) {
+      console.log(msg);
+    }
   }
   
 })(jQuery);
