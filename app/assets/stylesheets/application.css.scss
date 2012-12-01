@@ -1,5 +1,7 @@
+/*= require scaffold */
+
 body {
-  background-image: url(../images/background.png);
+  background-image: image-url('background.png');
 }
 
 /*body.without {

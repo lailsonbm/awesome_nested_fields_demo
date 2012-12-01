@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Phonebook</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
+  <title>Phone Book</title>
+  <%= stylesheet_link_tag :application %>
   <%= csrf_meta_tag %>
 </head>
 <body class="<%= controller_as_css_classes %>">
@@ -23,5 +22,7 @@
     })();
 
   </script>
+
+  <%= javascript_include_tag :application %>
 </body>
 </html>

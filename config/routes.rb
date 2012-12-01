@@ -1,4 +1,4 @@
-ContactsNestedFields::Application.routes.draw do
+Phonebook::Application.routes.draw do
   namespace :without do
     resources :people
   end
