@@ -4,18 +4,18 @@ body {
   background-image: image-url('background.png');
 }
 
-/*body.without {
-  background-image: url(../images/without-nested-fields-badge.png);
+body.without {
+  background: #ddd image-url('without-nested-fields-badge.png') top right no-repeat;
 }
 
 body.plain {
-  background-image: url(../images/plain-nested-fields-badge.png);
+  background: #ddd image-url('plain-nested-fields-badge.png') top right no-repeat;
 }
 
 body.table {
-  background-image: url(../images/table-nested-fields-badge.png);
+  background: #ddd image-url('table-nested-fields-badge.png') top right no-repeat;
 }
-*/
+
 div.actions {
   margin-top: 20px;
 }
